@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="setting_styles.css">
+    <title>Setting Sertifikat</title>
+</head>
+<body>
+    <div class="setting-container">
+        <h1>Setting Sertifikat</h1>
+        <form id="certificate-form" onsubmit="generateCertificate(event)">
+
+            <label for="ceo">CEO Codely:</label>
+            <input type="text" id="ceo" name="ceo" required>
+
+            <label for="nama_pengajar">Nama Pengajar:</label>
+            <input type="text" id="nama_pengajar" name="nama_pengajar" required>
+
+            <label for="instansi_pengajar">Instansi Pengajar:</label>
+            <input type="text" id="instansi_pengajar" name="instansi_pengajar" required>
+
+            <label for="tempat">Tempat:</label>
+            <input type="text" id="tempat" name="tempat" required>
+
+            <label for="tanggal">Tanggal:</label>
+            <input type="date" id="tanggal" name="tanggal" required>
+
+            <label for="ttd_pimpinan">TTD Pimpinan:</label>
+            <input type="file" id="ttd_pimpinan" name="ttd_pimpinan" accept="image/*" required>
+
+            <label for="ttd_pengajar">TTD Pengajar:</label>
+            <input type="file" id="ttd_pengajar" name="ttd_pengajar" accept="image/*" required>
+
+            <button type="submit">Kirim</button>
+            <button onclick="window.location.href='dashboard.html'" style="margin-left: 5px;">Kembali</button>
+
+        </form>
+    </div>
+    
+
+    <script>
+        function generateCertificate(event) {
+            event.preventDefault(); // Prevent form submission
+            const ceo = document.getElementById('ceo').value;
+            const namaPengajar = document.getElementById('nama_pengajar').value;
+            const instansiPengajar = document.getElementById('instansi_pengajar').value;
+            const tempat = document.getElementById('tempat').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const ttdPimpinan = document.getElementById('ttd_pimpinan').files[0];
+            const ttdPengajar = document.getElementById('ttd_pengajar').files[0];
+
+            // Create object URLs for the images
+            const ttdPimpinanURL = URL.createObjectURL(ttdPimpinan);
+            const ttdPengajarURL = URL.createObjectURL(ttdPengajar);
+
+            // Store the data in localStorage
+            localStorage.setItem('certificateData', JSON.stringify({
+                ceo,
+                namaPengajar,
+                instansiPengajar,
+                tempat,
+                tanggal,
+                ttdPimpinan: ttdPimpinanURL,
+                ttdPengajar: ttdPengajarURL
+            }));
+
+            // Redirect to the certificate display page
+            window.location.href = 'certificate_display.html';
+
+            // For now, we will just log the data to the console
+            console.log({ ceo, namaPengajar, instansiPengajar, tempat, tanggal, ttdPimpinan, ttdPengajar });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function submitForm() {
+            const no = document.getElementById('no').value;
+            const nama = document.getElementById('nama').value;
+            const noSertifikasi = document.getElementById('no-sertifikasi').value;
+            const temaPelatihan = document.getElementById('tema-pelatihan').value;
+
+            // Store data in local storage
+            let participants = JSON.parse(localStorage.getItem('participants')) || [];
+            participants.push({ no, nama, noSertifikasi, temaPelatihan });
+            localStorage.setItem('participants', JSON.stringify(participants));
+
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+            return false; // Prevent form submission
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="participant_styles.css">
+
+    <title>Tambah Peserta</title>
+</head>
+<body>
+    <div class="tambah-peserta-container">
+        <h2>Tambah Peserta</h2>
+        <form onsubmit="return submitForm();">
+
+            <label for="no">No:</label>
+            <input type="text" id="no" name="no" required>
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+            <label for="no-sertifikasi">No Sertifikasi:</label>
+            <input type="text" id="no-sertifikasi" name="no-sertifikasi" required>
+            <label for="tema-pelatihan">Tema Pelatihan:</label>
+            <input type="text" id="tema-pelatihan" name="tema-pelatihan" required>
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+</body>
+</html>

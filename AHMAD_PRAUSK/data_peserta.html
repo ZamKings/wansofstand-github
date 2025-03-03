@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="participant_styles.css">
+
+    <title>Data Peserta</title>
+    <script>
+        function loadParticipants() {
+            const participants = JSON.parse(localStorage.getItem('participants')) || [];
+            const tableBody = document.getElementById('participant-table-body');
+            tableBody.innerHTML = ''; // Clear existing rows
+            participants.forEach((participant, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${participant.no}</td>
+                    <td>${participant.nama}</td>
+                    <td>${participant.noSertifikasi}</td>
+                    <td>${participant.temaPelatihan}</td>
+                    <td><button onclick="deleteParticipant(${index})">Delete</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteParticipant(index) {
+            let participants = JSON.parse(localStorage.getItem('participants')) || [];
+            participants.splice(index, 1); // Remove the participant at the specified index
+            localStorage.setItem('participants', JSON.stringify(participants));
+            loadParticipants(); // Refresh the table
+        }
+
+        window.onload = loadParticipants;
+    </script>
+</head>
+<body>
+    <div class="participant-table-container">
+        <h2>Data Peserta</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>NAMA</th>
+                    <th>NO SERTIFIKAT</th>
+                    <th>TEMA PELATIHAN</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="participant-table-body">
+            </tbody>
+        </table>
+    </div>
+    
+    <button onclick="window.location.href='tambah_peserta.html'" style="margin-left: 115px;">Tambah Peserta</button>
+    <button onclick="window.location.href='dashboard.html'">Kembali</button>
+
+</body>
+</html>

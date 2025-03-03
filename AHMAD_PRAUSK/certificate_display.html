@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="setting_styles.css">
+    <title>Certificate Display</title>
+</head>
+<body>
+    <div class="certificate-container">
+        
+    <div id="certificate">
+        <h3>Certificate of Completion</h3>
+        <p>CEO: <span id="cert-ceo"></span></p>
+        <p>Instructor: <span id="cert-nama-pengajar"></span></p>
+        <p>Institution: <span id="cert-instansi-pengajar"></span></p>
+        <p>Location: <span id="cert-tempat"></span></p>
+        <p>Date: <span id="cert-tanggal"></span></p>
+        <div>
+            <img id="cert-ttd-pimpinan" src="" alt="Tanda tangan CEO" style="width: 1px;"/>
+            <img id="cert-ttd-pengajar" src="" alt="tanda Tangan Pengajar" style="width: 1px;"/>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="button-container">
+        <button class="back-button" onclick="window.location.href='setting.html'">Back to Settings</button>
+    </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+    <script>
+        function displayCertificate(data) {
+            document.getElementById('cert-ceo').innerText = data.ceo;
+            document.getElementById('cert-nama-pengajar').innerText = data.namaPengajar;
+            document.getElementById('cert-instansi-pengajar').innerText = data.instansiPengajar;
+            document.getElementById('cert-tempat').innerText = data.tempat;
+            document.getElementById('cert-tanggal').innerText = data.tanggal;
+
+        const ttdPimpinan = data.ttdPimpinan || ''; // Ensure fallback if not set
+        const ttdPengajar = data.ttdPengajar || ''; // Ensure fallback if not set
+
+
+        document.getElementById('cert-ttd-pimpinan').src = ttdPimpinan; // Set CEO signature
+        document.getElementById('cert-ttd-pengajar').src = ttdPengajar; // Set Instructor signature
+
+        }
+
+        // Retrieve data from localStorage and display the certificate
+        window.onload = function() {
+            const data = JSON.parse(localStorage.getItem('certificateData'));
+            if (data) {
+                displayCertificate(data);
+            }
+        };
+    </script>
+    
+
+    </div>
+</body>
+</html>

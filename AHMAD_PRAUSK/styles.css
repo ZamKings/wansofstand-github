@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #80deea); /* Soft gradient background */
+    margin: 0;
+    padding: 0;
+}
+
+
+.login-container, .dashboard-container, .create-account-container, .tambah-peserta-container {
+    max-width: 90%; /* Updated for responsiveness */
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px; /* Updated for a softer look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+
+h2 {
+    text-align: center;
+    color: #007bff; /* Updated heading color */
+    font-size: 28px; /* Increased font size for emphasis */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for the Tambah Peserta page */
+.tambah-peserta-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px; /* Updated for a softer look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+}
+
+.tambah-peserta-container h2 {
+    text-align: center;
+    color: #007bff; /* Updated heading color */
+    font-size: 28px; /* Increased font size for emphasis */
+}
+
+.tambah-peserta-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.tambah-peserta-container label {
+    margin-bottom: 5px;
+}
+
+.tambah-peserta-container input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.tambah-peserta-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.tambah-peserta-container button:hover {
+    background-color: #0056b3;
+}
